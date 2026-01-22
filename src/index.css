@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 175 70% 45%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 175 70% 45%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 175 70% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(175, 70%, 45%), hsl(195, 70%, 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(220, 20%, 8%), hsl(220, 20%, 4%));
+    --shadow-glow: 0 0 40px -10px hsl(175, 70%, 45%, 0.3);
+    --shadow-card: 0 4px 24px -4px hsl(0, 0%, 0%, 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+  #lovable-badge {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300;
+    box-shadow: 0 0 20px -5px hsl(175, 70%, 45%, 0.4);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px -5px hsl(175, 70%, 45%, 0.6);
+  }
+
+  .btn-outline {
+    @apply border border-primary/50 text-primary hover:bg-primary/10 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:border-primary/40;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1.5 text-sm font-medium rounded-md bg-secondary text-secondary-foreground border border-border transition-colors hover:border-primary/40 hover:text-primary;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors duration-200 text-sm font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-primary;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
