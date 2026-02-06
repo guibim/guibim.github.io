@@ -2,6 +2,18 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
+         {
+      company: 'PER5 Engenharia',
+      role: 'Business Development & OpenBIM QA/QC',
+      period: 'Aug 2024 – Present',
+      location: 'Remote',
+      focus: 'Administrative, financial, operational management, marketing and OpenBIM QA',
+      highlights: [
+        'I lead PER5’s brand strategy, digital presence, and B2B client acquisition. I manage and evolve the institutional website, create marketing materials, and structure the service portfolio (PT-BR and EN), ensuring consistent positioning and conversion.',
+        'I also handle first-contact outreach and lead qualification, translating client needs into clear technical scope and coordinating delivery with the operational team.',
+        'On the technical side, I support OpenBIM (IFC) workflows by performing QA/QC, validating deliverables, and standardizing documentation to ensure interoperability, reduce rework, and improve overall delivery quality.',
+      ],
+    },
     {
       company: 'Nuclear Gaming',
       role: 'QA Analyst (Freelance)',
