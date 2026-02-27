@@ -24,11 +24,11 @@ const Hero = () => {
           {/* Location Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8 animate-fade-in">
             <MapPin size={14} className="text-primary" />
-            <span className="text-sm text-muted-foreground">Based in Jaguariúna – São Paulo, Brazil</span>
+            <span className="text-sm text-muted-foreground">Based in São Paulo, Brazil</span>
           </div>
 
           {/* Name */}
-          <h1 
+          <h1
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4 animate-fade-in"
             style={{ animationDelay: '0.1s' }}
           >
@@ -36,7 +36,7 @@ const Hero = () => {
           </h1>
 
           {/* Role */}
-          <p 
+          <p
             className="text-xl sm:text-2xl lg:text-3xl font-medium text-gradient mb-6 animate-fade-in"
             style={{ animationDelay: '0.2s' }}
           >
@@ -44,7 +44,7 @@ const Hero = () => {
           </p>
 
           {/* Description */}
-          <p 
+          <p
             className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8 animate-fade-in"
             style={{ animationDelay: '0.3s' }}
           >
@@ -52,7 +52,7 @@ const Hero = () => {
           </p>
 
           {/* Tags */}
-          <div 
+          <div
             className="flex flex-wrap justify-center gap-2 mb-10 animate-fade-in"
             style={{ animationDelay: '0.4s' }}
           >
@@ -64,7 +64,7 @@ const Hero = () => {
           </div>
 
           {/* CTAs */}
-          <div 
+          <div
             className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
             style={{ animationDelay: '0.5s' }}
           >
