@@ -2,40 +2,40 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
-         {
+    {
       company: 'PER5 Engenharia',
-      role: 'Business Development & OpenBIM QA/QC',
-      period: 'Aug 2024 – Present',
-      location: 'Remote',
-      focus: 'Administrative, financial, operational management, marketing and OpenBIM QA',
+      role: 'OpenBIM (IFC) QA Analyst & Business Development',
+      period: 'Oct 2024 – Present',
+      location: 'Remote — Freelance',
+      focus: 'Validating deliverables and standardizing documentation to ensure interoperability.',
       highlights: [
-        'I lead PER5’s brand strategy, digital presence, and B2B client acquisition. I manage and evolve the institutional website, create marketing materials, and structure the service portfolio (PT-BR and EN), ensuring consistent positioning and conversion.',
-        'I also handle first-contact outreach and lead qualification, translating client needs into clear technical scope and coordinating delivery with the operational team.',
-        'On the technical side, I support OpenBIM (IFC) workflows by performing QA/QC, validating deliverables, and standardizing documentation to ensure interoperability, reduce rework, and improve overall delivery quality.',
+        'I lead the OpenBIM (IFC) QA/QC front, validating deliverables and standardizing documentation to ensure interoperability, reduce rework, and improve overall project quality, aligned with ISO 19650 guidelines.',
+        'I manage the technical-commercial interface: I structure and maintain lead qualification processes, translate client needs into clear and traceable scope and criteria, and ensure seamless handoff to the operational team.',
+        'I also support the organization of the services portfolio and the production of technical materials (PT/EN).',
       ],
     },
     {
       company: 'Nuclear Gaming',
-      role: 'QA Analyst (Freelance)',
+      role: 'QA Analyst',
       period: 'Jan 2025 – Dec 2025',
-      location: 'Remote',
-      focus: 'Build stabilization and test infrastructure automation for Unity/HTML5 games.',
+      location: 'Remote — Freelance',
+      focus: 'Planned and executed functional, regression, and exploratory tests for Unity games.',
       highlights: [
-        'Performance Testing: Validated stability and performance in Unity WebGL environments, focusing on rendering bottlenecks and usability.',
-        'Pipeline & Infra: Implemented CI/CD workflows with Docker, automating deployment and ensuring code integrity across releases.',
-        'Shift-left Testing: Strategic involvement in defining software architecture and testability standards from the design phase.',
+        'Worked on a Unity WebGL/HTML5 game development project, planning and executing functional, regression, and exploratory tests to ensure requirement compliance and release stability.',
+        'Logged, prioritized, and tracked defects with complete evidence, aligning severity and impact with cross-functional teams through resolution.',
+        'Supported performance and stability validations, release checklists, and contributed to execution routines and automations within a standardized environment, leveraging CI and Docker.',
       ],
     },
     {
       company: 'Grupo BIM',
-      role: 'Administrative Operations',
+      role: 'Administrative | Process & Data Quality',
       period: 'Jan 2017 – Aug 2025',
       location: 'On-site',
       focus: 'Administrative, financial, and operational management.',
       highlights: [
-        'Managed logistics operations, data organization, and coordination between legal and accounting departments.',
-        'Developed analytical skills and attention to detail that now drive my approach to software quality.',
-        'Built a strong foundation in process optimization and systematic problem-solving.',
+        'Developed and improved internal systems for process control and traceability, with a strong focus on data quality and consistency. Created dashboards and spreadsheet models with validations, standardization, and auditing, applying Quality Assurance practices to reduce defects and rework.',
+        'Automated routines using JavaScript for data validation, transformation, and reporting with automated checks.',
+        'Implemented Python scripts and applications for data consolidation and analysis, ensuring reliability and traceability of information.',
       ],
     },
   ];
