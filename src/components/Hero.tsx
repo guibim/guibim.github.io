@@ -10,8 +10,8 @@ const Hero = () => {
     'API Testing',
   ];
 
-  const scrollToProjects = () => {
-    const element = document.querySelector('#projects');
+  const scrollToPortfolio = () => {
+    const element = document.querySelector('#portfolio');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -69,18 +69,20 @@ const Hero = () => {
             style={{ animationDelay: '0.5s' }}
           >
             <button
-              onClick={scrollToProjects}
+              onClick={scrollToPortfolio}
               className="btn-primary px-8 py-3 rounded-lg font-medium flex items-center gap-2"
             >
-              View Projects
+              View Portfolio
               <ArrowDown size={18} />
             </button>
             <a
-              href="#"
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-outline px-8 py-3 rounded-lg font-medium flex items-center gap-2"
             >
               <Download size={18} />
-              Download CV
+              Download Resume
             </a>
           </div>
         </div>

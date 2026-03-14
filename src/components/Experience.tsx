@@ -17,7 +17,7 @@ const Experience = () => {
     {
       company: 'Nuclear Gaming',
       role: 'QA Analyst',
-      period: 'Jan 2025 – Dec 2025',
+      period: 'Jan 2025 – Present',
       location: 'Remote — Freelance',
       focus: 'Planned and executed functional, regression, and exploratory tests for Unity games.',
       highlights: [

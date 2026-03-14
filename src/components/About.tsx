@@ -22,11 +22,11 @@ const About = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-12 border-t border-border">
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary mb-2">26</p>
+              <p className="text-3xl font-bold text-primary mb-2">27</p>
               <p className="text-sm text-muted-foreground">Years Old</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-primary mb-2">2+</p>
+              <p className="text-3xl font-bold text-primary mb-2">3+</p>
               <p className="text-sm text-muted-foreground">Years in QA</p>
             </div>
             <div className="text-center">
