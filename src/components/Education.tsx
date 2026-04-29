@@ -1,135 +1,153 @@
-import { GraduationCap, Award, Clock } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { useLang } from '@/contexts/LanguageContext';
+import { content } from '@/lib/content';
+
+const COURSES_URL =
+  'https://docs.google.com/spreadsheets/d/1CD9x_f_cSd1cHMqV2ocq6ZeNRr0EsZ32hiYcxnFE1Xw/edit?gid=0#gid=0';
+
+const certifications = [
+  { name: 'Certified Scrum Professional®', issuer: 'CertiPROF', approved: true },
+  { name: 'ISTQB CTFL', issuer: 'ISTQB — Expected 2026', approved: false },
+];
+
+const education = [
+  { degree: 'B.Sc. Software Engineering', institution: 'Faculdade Anhanguera', period: 'Jan 2026 – In Progress', inProgress: true },
+  { degree: 'B.B.A. Business Administration', institution: 'Centro Universitário de Jaguariúna (UniFAJ)', period: 'Jan 2019 – Dec 2022', inProgress: false },
+];
+
+const languages = [
+  { name: 'Portuguese', level: 'Native' },
+  { name: 'English', level: 'Advanced' },
+];
 
 const Education = () => {
-  const education = [
-    {
-      degree: 'B.S. in Software Engineering',
-      institution: 'Faculdade Anhanguera',
-      status: 'Expected 2029',
-      inProgress: true,
-    },
-    {
-      degree: 'B.S. in Business Administration',
-      institution: 'UniFAJ',
-      status: 'Graduated 2022',
-      inProgress: false,
-    },
-  ];
-
-  const certifications = [
-    {
-      name: 'Certified Scrum Professional®',
-      issuer: 'Scrum Alliance',
-      inProgress: false,
-    },
-    {
-      name: 'ISTQB CTFL',
-      issuer: 'ISTQB',
-      inProgress: true,
-    },
-  ];
-
-  const languages = [
-    { name: 'Portuguese', level: 'Native' },
-    { name: 'English', level: 'Professional' },
-  ];
+  const { lang } = useLang();
+  const c = content[lang].certifications;
 
   return (
-    <section id="education" className="section-padding bg-secondary/30">
-      <div className="section-container">
-        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-          Education & Certifications
+    <section id="certifications" className="py-24 lg:py-32" style={{ background: 'var(--bg-main)' }}>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-[60px]">
+
+        <p className="reveal section-label mb-8" style={{ color: 'var(--text-muted)' }}>{c.label}</p>
+
+        <h2
+          className="reveal font-display leading-[0.9] mb-16"
+          style={{ fontSize: 'clamp(44px, 6vw, 90px)', color: 'var(--text-primary)' }}
+        >
+          {c.h2a}
+          <br />
+          <span className="text-[#22C3B6]">{c.h2b}</span>
         </h2>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Education */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                  <GraduationCap size={24} />
+        {/* Certifications */}
+        <div className="reveal mb-14">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
+            <p className="section-label" style={{ color: 'var(--text-muted)' }}>{c.certsTitle}</p>
+            <a
+              href={COURSES_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase px-4 py-2 transition-colors duration-200"
+              style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#22C3B6'; (e.currentTarget as HTMLElement).style.color = '#22C3B6'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)'; }}
+            >
+              <ExternalLink size={11} />
+              {lang === 'en' ? 'View All Courses & Certificates' : 'Ver Todos os Cursos & Certificados'}
+            </a>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((cert) => (
+              <div
+                key={cert.name}
+                className="group p-6 transition-colors duration-300"
+                style={{
+                  border: cert.approved ? '1px solid var(--border)' : '1px dashed var(--border)',
+                  opacity: cert.approved ? 1 : 0.65,
+                }}
+                onMouseEnter={(e) => cert.approved && ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,195,182,0.5)')}
+                onMouseLeave={(e) => cert.approved && ((e.currentTarget as HTMLElement).style.borderColor = 'var(--border)')}
+              >
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center mb-4"
+                  style={{ background: '#22C3B6' }}
+                >
+                  <span className="font-mono text-xs text-[#0C0E12]">&gt;_</span>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Education</h3>
-              </div>
-
-              <div className="space-y-4">
-                {education.map((edu) => (
-                  <div
-                    key={edu.degree}
-                    className="bg-card border border-border rounded-xl p-5 card-hover"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h4 className="font-semibold text-foreground">{edu.degree}</h4>
-                        <p className="text-sm text-muted-foreground">{edu.institution}</p>
-                      </div>
-                      <span
-                        className={`text-xs px-2 py-1 rounded-full ${
-                          edu.inProgress
-                            ? 'bg-primary/10 text-primary'
-                            : 'bg-secondary text-secondary-foreground'
-                        }`}
-                      >
-                        {edu.inProgress && <Clock size={12} className="inline mr-1" />}
-                        {edu.status}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Certifications */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                  <Award size={24} />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Certifications
-                </h3>
-              </div>
-
-              <div className="space-y-4">
-                {certifications.map((cert) => (
-                  <div
-                    key={cert.name}
-                    className="bg-card border border-border rounded-xl p-5 card-hover"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h4 className="font-semibold text-foreground">{cert.name}</h4>
-                        <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-                      </div>
-                      {cert.inProgress && (
-                        <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary flex items-center gap-1">
-                          <Clock size={12} />
-                          In Progress
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Languages */}
-              <div className="mt-8">
-                <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
-                  Languages
+                <h4
+                  className="font-display leading-tight"
+                  style={{ fontSize: 'clamp(18px, 2vw, 22px)', color: 'var(--text-primary)' }}
+                >
+                  {cert.name}
                 </h4>
-                <div className="flex gap-3">
-                  {languages.map((lang) => (
-                    <div
-                      key={lang.name}
-                      className="px-4 py-2 bg-card border border-border rounded-lg"
-                    >
-                      <span className="text-foreground font-medium">{lang.name}</span>
-                      <span className="text-muted-foreground text-sm ml-2">({lang.level})</span>
-                    </div>
-                  ))}
+                <p className="font-mono text-[10px] tracking-[0.1em] mt-1" style={{ color: 'var(--text-muted)' }}>
+                  {cert.issuer}
+                </p>
+                <p className={`font-mono text-[10px] tracking-[0.12em] uppercase mt-4 ${cert.approved ? 'text-emerald-500' : 'text-yellow-500'}`}>
+                  {cert.approved ? '✓ APPROVED' : '○ IN PROGRESS'}
+                </p>
+              </div>
+            ))}
+
+            {/* Next placeholder */}
+            <div
+              className="p-6 flex flex-col items-center justify-center gap-2 opacity-30"
+              style={{ border: '1px dashed var(--border)' }}
+            >
+              <span className="font-mono text-2xl" style={{ color: 'var(--text-muted)' }}>+</span>
+              <span className="font-mono text-[10px] tracking-[0.15em] uppercase" style={{ color: 'var(--text-muted)' }}>
+                {c.next}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Education */}
+        <div className="reveal mb-10">
+          <p className="section-label mb-5" style={{ color: 'var(--text-muted)' }}>{c.eduTitle}</p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {education.map((edu) => (
+              <div
+                key={edu.degree}
+                className="p-6 transition-colors duration-300"
+                style={{ border: '1px solid var(--border)' }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,195,182,0.4)')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = 'var(--border)')}
+              >
+                <h4
+                  className="font-display leading-tight"
+                  style={{ fontSize: 'clamp(18px, 2vw, 22px)', color: 'var(--text-primary)' }}
+                >
+                  {edu.degree}
+                </h4>
+                <p className="font-mono text-[10px] tracking-[0.1em] mt-1" style={{ color: 'var(--text-muted)' }}>
+                  {edu.institution}
+                </p>
+                <div className="flex items-center justify-between mt-4">
+                  <span className="font-mono text-[10px]" style={{ color: 'var(--text-muted)' }}>{edu.period}</span>
+                  <span className={`font-mono text-[10px] tracking-[0.12em] uppercase ${edu.inProgress ? 'text-yellow-500' : 'text-emerald-500'}`}>
+                    {edu.inProgress ? '○ IN PROGRESS' : '✓ COMPLETED'}
+                  </span>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Languages */}
+        <div className="reveal" style={{ borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
+          <p className="section-label mb-4" style={{ color: 'var(--text-muted)' }}>{c.langsTitle}</p>
+          <div className="flex flex-wrap gap-3">
+            {languages.map((lang) => (
+              <div key={lang.name} className="px-5 py-2.5" style={{ border: '1px solid var(--border)' }}>
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em]" style={{ color: 'var(--text-primary)' }}>
+                  {lang.name}
+                </span>
+                <span className="font-mono text-[10px] ml-2" style={{ color: 'var(--text-muted)' }}>
+                  — {lang.level}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

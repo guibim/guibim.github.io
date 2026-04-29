@@ -1,95 +1,88 @@
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { useLang } from '@/contexts/LanguageContext';
+import { content } from '@/lib/content';
 
 const Experience = () => {
-  const experiences = [
-    {
-      company: 'PER5 Engenharia',
-      role: 'OpenBIM (IFC) QA Analyst & Business Development',
-      period: 'Oct 2024 – Present',
-      location: 'Remote — Freelance',
-      focus: 'Validating deliverables and standardizing documentation to ensure interoperability.',
-      highlights: [
-        'I lead the OpenBIM (IFC) QA/QC front, validating deliverables and standardizing documentation to ensure interoperability, reduce rework, and improve overall project quality, aligned with ISO 19650 guidelines.',
-        'I manage the technical-commercial interface: I structure and maintain lead qualification processes, translate client needs into clear and traceable scope and criteria, and ensure seamless handoff to the operational team.',
-        'I also support the organization of the services portfolio and the production of technical materials (PT/EN).',
-      ],
-    },
-    {
-      company: 'Nuclear Gaming',
-      role: 'QA Analyst',
-      period: 'Jan 2025 – Present',
-      location: 'Remote — Freelance',
-      focus: 'Planned and executed functional, regression, and exploratory tests for Unity games.',
-      highlights: [
-        'Worked on a Unity WebGL/HTML5 game development project, planning and executing functional, regression, and exploratory tests to ensure requirement compliance and release stability.',
-        'Logged, prioritized, and tracked defects with complete evidence, aligning severity and impact with cross-functional teams through resolution.',
-        'Supported performance and stability validations, release checklists, and contributed to execution routines and automations within a standardized environment, leveraging CI and Docker.',
-      ],
-    },
-    {
-      company: 'Grupo BIM',
-      role: 'Administrative | Process & Data Quality',
-      period: 'Jan 2017 – Aug 2025',
-      location: 'On-site',
-      focus: 'Administrative, financial, and operational management.',
-      highlights: [
-        'Developed and improved internal systems for process control and traceability, with a strong focus on data quality and consistency. Created dashboards and spreadsheet models with validations, standardization, and auditing, applying Quality Assurance practices to reduce defects and rework.',
-        'Automated routines using JavaScript for data validation, transformation, and reporting with automated checks.',
-        'Implemented Python scripts and applications for data consolidation and analysis, ensuring reliability and traceability of information.',
-      ],
-    },
-  ];
+  const { lang } = useLang();
+  const c = content[lang].experience;
 
   return (
-    <section id="experience" className="section-padding">
-      <div className="section-container">
-        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-          Professional Experience
+    <section id="experience" className="py-24 lg:py-32" style={{ background: 'var(--bg-main)' }}>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-[60px]">
+
+        <p className="reveal section-label mb-8" style={{ color: 'var(--text-muted)' }}>{c.label}</p>
+
+        <h2
+          className="reveal font-display leading-[0.9] mb-16"
+          style={{ fontSize: 'clamp(56px, 7vw, 110px)', color: 'var(--text-primary)' }}
+        >
+          {c.h2a}
+          <br />
+          <span className="text-[#22C3B6]">{c.h2b}</span>
         </h2>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
+        <div>
+          {c.items.map((exp) => (
+            <div
+              key={exp.company}
+              className="reveal group relative grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6 lg:gap-12 py-10 transition-all duration-300"
+              style={{ borderTop: '1px solid var(--border)' }}
+            >
+              {/* Teal hover bar */}
+              <div
+                className="absolute left-0 top-0 bottom-0 w-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: '#22C3B6' }}
+              />
 
-            {experiences.map((exp, index) => (
-              <div key={exp.company} className="relative pl-8 md:pl-20 pb-12 last:pb-0">
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-8 w-4 h-4 rounded-full bg-primary -translate-x-1/2 mt-1.5 ring-4 ring-background" />
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse 60% 80% at 20% 50%, rgba(34,195,182,0.06), transparent 70%)',
+                }}
+              />
 
-                {/* Content card */}
-                <div className="bg-card border border-border rounded-xl p-6 card-hover">
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground">{exp.company}</h3>
-                      <p className="text-primary font-medium">{exp.role}</p>
-                    </div>
-                    <div className="flex flex-col items-start sm:items-end gap-1 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={14} />
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MapPin size={14} />
-                        {exp.location}
-                      </span>
-                    </div>
-                  </div>
+              {/* Left: period */}
+              <div className="relative z-10">
+                <p className="font-mono text-[11px] tracking-[0.1em]" style={{ color: '#22C3B6' }}>
+                  {exp.period}
+                </p>
+                <p className="font-mono text-[10px] mt-1 tracking-[0.08em]" style={{ color: 'var(--text-muted)' }}>
+                  {exp.location}
+                </p>
+              </div>
 
-                  <p className="text-muted-foreground mb-4 italic">{exp.focus}</p>
-
-                  <ul className="space-y-2">
-                    {exp.highlights.map((highlight, idx) => (
-                      <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="text-primary mt-1.5">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Right: content */}
+              <div className="relative z-10">
+                <h3
+                  className="font-display"
+                  style={{ fontSize: 'clamp(20px, 2.5vw, 30px)', color: 'var(--text-primary)' }}
+                >
+                  {exp.company}
+                </h3>
+                <p
+                  className="font-mono text-[10px] tracking-[0.12em] uppercase mt-1"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {exp.role}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed max-w-2xl" style={{ color: 'var(--text-muted)' }}>
+                  {exp.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {exp.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded px-3 py-1 font-mono text-[10px] tracking-[0.08em] transition-colors duration-200"
+                      style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+          <div style={{ borderTop: '1px solid var(--border)' }} />
         </div>
       </div>
     </section>

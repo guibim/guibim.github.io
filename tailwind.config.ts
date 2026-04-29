@@ -8,9 +8,7 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1400px" },
     },
     extend: {
       colors: {
@@ -47,6 +45,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        teal: "#22C3B6",
+        "teal-dark": "#1aada1",
+        "teal-glow": "rgba(34,195,182,0.3)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -54,8 +55,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        display: ["Bebas Neue", "cursive"],
+        mono: ["Space Mono", "monospace"],
+        sans: ["system-ui", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -66,20 +68,21 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(10px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
-        "slide-in": {
-          from: { opacity: "0", transform: "translateX(-10px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "33%": { transform: "translateY(-10px) rotate(1.5deg)" },
+          "66%": { transform: "translateY(5px) rotate(-0.8deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out forwards",
-        "slide-in": "slide-in 0.5s ease-out forwards",
+        marquee: "marquee 28s linear infinite",
+        float: "float 5s ease-in-out infinite",
       },
     },
   },

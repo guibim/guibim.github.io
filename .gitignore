@@ -1,1 +1,10 @@
 node_modules
+
+# Reference docs used during development (not for deploy)
+portfolio-base.md
+portfolio-objetivo.md
+pr_body.txt
+pr_title.txt
+
+# CV source file at root (served from public/resume.pdf instead)
+CV_Guilherme_Bim_QA_EN 04-26.pdf

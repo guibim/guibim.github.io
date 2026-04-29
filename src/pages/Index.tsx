@@ -1,26 +1,38 @@
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import StudyNotes from '@/components/StudyNotes';
+import Ticker from '@/components/Ticker';
 import Experience from '@/components/Experience';
 import Portfolio from '@/components/Portfolio';
+import StudyNotes from '@/components/StudyNotes';
 import Education from '@/components/Education';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="w-full">
       <Header />
       <main>
         <Hero />
         <About />
-        <Skills />
-        <Projects />
-        <StudyNotes />
+        <Ticker />
         <Experience />
         <Portfolio />
+        <StudyNotes />
         <Education />
       </main>
       <Footer />

@@ -1,90 +1,115 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { LayoutGrid, ArrowRight } from 'lucide-react';
 import { projects } from '@/data/projects';
+import { useLang } from '@/contexts/LanguageContext';
+import { content } from '@/lib/content';
 
 const Portfolio = () => {
-    return (
-        <section id="portfolio" className="section-padding">
-            <div className="section-container">
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-                    Portfolio
-                </h2>
+  const { lang } = useLang();
+  const c = content[lang].projects;
 
-                <div className="max-w-5xl mx-auto">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                            <LayoutGrid size={24} />
-                        </div>
-                        <h3 className="text-xl font-semibold text-foreground">My Work</h3>
-                    </div>
+  return (
+    <section id="projects" className="py-24 lg:py-32" style={{ background: 'var(--bg-alt)' }}>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-[60px]">
 
-                    {/* 3x3 Grid Matrix */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {projects.map((project) => (
-                            <Link
-                                to={`/portfolio/${project.slug}`}
-                                key={project.id}
-                                className="group relative bg-card border border-border rounded-xl p-5 flex flex-col gap-3 card-hover cursor-pointer no-underline"
-                            >
-                                {/* Number badge + Logo */}
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs font-mono font-bold text-primary/70 bg-primary/10 rounded-md px-2 py-1">
-                                        #{String(project.id).padStart(2, '0')}
-                                    </span>
-                                    <ArrowRight
-                                        size={16}
-                                        className="text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                                    />
-                                </div>
+        <p className="reveal section-label mb-8" style={{ color: 'var(--text-muted)' }}>{c.label}</p>
 
-                                {/* Project logo */}
-                                <div className="flex items-center justify-center py-1">
-                                    <img
-                                        src={project.logo}
-                                        alt={`${project.title} logo`}
-                                        className="w-10 h-10 object-contain rounded-lg border border-border/50 bg-secondary/30 p-1 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                                    />
-                                </div>
+        <h2
+          className="reveal font-display leading-[0.9] mb-16"
+          style={{ fontSize: 'clamp(56px, 7vw, 110px)', color: 'var(--text-primary)' }}
+        >
+          {c.h2a}
+          <br />
+          <span className="text-[#22C3B6]">{c.h2b}</span>
+        </h2>
 
-                                {/* Title & subtitle */}
-                                <div>
-                                    <h4 className="text-base font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-tight">
-                                        {project.title}
-                                    </h4>
-                                    <p className="text-xs text-muted-foreground mt-0.5">
-                                        {project.subtitle}
-                                    </p>
-                                </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: 'var(--border)' }}>
+          {projects.map((project, index) => (
+            <Link
+              key={project.id}
+              to={`/portfolio/${project.slug}`}
+              className="reveal group relative flex flex-col gap-4 p-7 no-underline transition-all duration-300"
+              style={{
+                background: 'var(--bg-alt)',
+                border: '1px dashed var(--border)',
+                transitionDelay: `${(index % 3) * 50}ms`,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderStyle = 'solid';
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,195,182,0.4)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderStyle = 'dashed';
+                (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
+              }}
+            >
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(34,195,182,0.06), transparent 70%)' }}
+              />
 
-                                {/* Summary */}
-                                <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-3 flex-1">
-                                    {project.summary}
-                                </p>
-
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
-                                    {project.tags.slice(0, 3).map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="text-[10px] font-medium px-2 py-0.5 rounded bg-secondary text-secondary-foreground border border-border"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                    {project.tags.length > 3 && (
-                                        <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-secondary/50 text-muted-foreground">
-                                            +{project.tags.length - 3}
-                                        </span>
-                                    )}
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+              {/* Number + logo */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="font-mono text-[10px] tracking-[0.2em]" style={{ color: '#22C3B6' }}>
+                  [{String(project.id).padStart(2, '0')}]
+                </span>
+                <div className="flex items-center gap-2">
+                  <img
+                    src={project.logo}
+                    alt={`${project.title} logo`}
+                    className="w-8 h-8 object-contain rounded p-1 opacity-60 group-hover:opacity-100 transition-opacity"
+                    style={{ background: 'var(--border)' }}
+                  />
+                  <span
+                    className="font-mono text-[20px] group-hover:text-[#22C3B6] transition-colors"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    +
+                  </span>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+
+              {/* Title */}
+              <div className="relative z-10">
+                <h4
+                  className="font-display group-hover:text-[#22C3B6] transition-colors duration-200"
+                  style={{ fontSize: 'clamp(18px, 2vw, 24px)', color: 'var(--text-primary)' }}
+                >
+                  {project.title}
+                </h4>
+                <p className="font-mono text-[10px] tracking-[0.1em] uppercase mt-1" style={{ color: 'var(--text-muted)' }}>
+                  {project.subtitle}
+                </p>
+              </div>
+
+              {/* Summary */}
+              <p className="relative z-10 text-sm leading-relaxed line-clamp-3 flex-1" style={{ color: 'var(--text-muted)' }}>
+                {project.summary}
+              </p>
+
+              {/* Tags */}
+              <div className="relative z-10 flex flex-wrap gap-1.5 mt-auto pt-2">
+                {project.tags.slice(0, 3).map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded px-2.5 py-1 font-mono text-[9px] tracking-[0.08em]"
+                    style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+                {project.tags.length > 3 && (
+                  <span className="font-mono text-[9px] py-1 px-1" style={{ color: 'var(--text-muted)' }}>
+                    +{project.tags.length - 3}
+                  </span>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Portfolio;
