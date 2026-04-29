@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npx tsc *)",
-      "Bash(bun run *)"
+      "Bash(bun run *)",
+      "Read(//c/Users/user/.claude/projects/c--Repo-local-guibim-github-io/memory/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\user\\.claude\\projects\\c--Repo-local-guibim-github-io\\memory"
     ]
   }
 }

@@ -81,6 +81,7 @@ export const content = {
       label: '[03] — PROJECTS',
       h2a: 'MY',
       h2b: 'WORK',
+      productBadge: 'FOR LICENSING',
     },
     notes: {
       label: '[04] — STUDY NOTES',
@@ -200,6 +201,7 @@ export const content = {
       label: '[03] — PROJETOS',
       h2a: 'MEU',
       h2b: 'TRABALHO',
+      productBadge: 'DISPONÍVEL PARA LICENÇA',
     },
     notes: {
       label: '[04] — NOTAS DE ESTUDO',

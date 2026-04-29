@@ -48,18 +48,27 @@ const Portfolio = () => {
                 style={{ background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(34,195,182,0.06), transparent 70%)' }}
               />
 
-              {/* Number + logo */}
-              <div className="relative z-10 flex items-center justify-between">
+              {/* Number + logo/title */}
+              <div className="relative z-10 flex items-center justify-between min-h-[36px]">
                 <span className="font-mono text-[10px] tracking-[0.2em]" style={{ color: '#22C3B6' }}>
                   [{String(project.id).padStart(2, '0')}]
                 </span>
                 <div className="flex items-center gap-2">
-                  <img
-                    src={project.logo}
-                    alt={`${project.title} logo`}
-                    className="w-8 h-8 object-contain rounded p-1 opacity-60 group-hover:opacity-100 transition-opacity"
-                    style={{ background: 'var(--border)' }}
-                  />
+                  {project.logo ? (
+                    <img
+                      src={project.logo}
+                      alt={`${project.title} logo`}
+                      className="w-8 h-8 object-contain rounded p-1 opacity-60 group-hover:opacity-100 transition-opacity"
+                      style={{ background: 'var(--border)' }}
+                    />
+                  ) : (
+                    <span
+                      className="font-display leading-none"
+                      style={{ fontSize: 'clamp(22px, 2.5vw, 30px)', color: 'var(--accent)' }}
+                    >
+                      {project.title}
+                    </span>
+                  )}
                   <span
                     className="font-mono text-[20px] group-hover:text-[#22C3B6] transition-colors"
                     style={{ color: 'var(--text-muted)' }}
@@ -69,14 +78,31 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              {/* Title */}
-              <div className="relative z-10">
-                <h4
-                  className="font-display group-hover:text-[#22C3B6] transition-colors duration-200"
-                  style={{ fontSize: 'clamp(18px, 2vw, 24px)', color: 'var(--text-primary)' }}
+              {/* Badge FOR LICENSING */}
+              {project.status === 'in-development' && (
+                <span
+                  className="relative z-10 inline-flex items-center gap-1.5 self-start px-2.5 py-0.5 rounded-sm border font-mono text-[9px] font-bold tracking-[0.2em] uppercase"
+                  style={{
+                    borderColor: 'var(--amber)',
+                    color: 'var(--amber)',
+                    backgroundColor: 'var(--amber-muted)',
+                  }}
                 >
-                  {project.title}
-                </h4>
+                  <span className="text-[7px]">◆</span>
+                  {c.productBadge}
+                </span>
+              )}
+
+              {/* Title (only for projects WITH logo — the others already show title in the header row) */}
+              <div className="relative z-10">
+                {project.logo && (
+                  <h4
+                    className="font-display group-hover:text-[#22C3B6] transition-colors duration-200"
+                    style={{ fontSize: 'clamp(18px, 2vw, 24px)', color: 'var(--text-primary)' }}
+                  >
+                    {project.title}
+                  </h4>
+                )}
                 <p className="font-mono text-[10px] tracking-[0.1em] uppercase mt-1" style={{ color: 'var(--text-muted)' }}>
                   {project.subtitle}
                 </p>

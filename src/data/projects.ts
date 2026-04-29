@@ -5,7 +5,8 @@ export interface Project {
   subtitle: string;
   summary: string;
   tags: string[];
-  logo: string;
+  logo?: string;
+  status?: 'in-development' | 'live';
 }
 
 export const projects: Project[] = [
@@ -98,5 +99,45 @@ export const projects: Project[] = [
       'Led brand development, lead generation, and internal process structuring, connecting business operations with quality-oriented workflows. Designed internal systems, business rules, and administrative controls focused on process reliability and standardization.',
     tags: ['Operations', 'Systems Design', 'Quality', 'Process Structuring'],
     logo: '/logos/logo9-r2j.png',
+  },
+  {
+    id: 10,
+    slug: 'portfolio-10',
+    title: 'FINLY',
+    subtitle: 'Financial Management SaaS',
+    summary:
+      'Web platform for financial management of micro and small businesses — contracts, accounts payable/receivable, cash flow projection, DRE, and document management in a single multi-tenant SaaS application.',
+    tags: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'SaaS'],
+    status: 'in-development',
+  },
+  {
+    id: 11,
+    slug: 'portfolio-11',
+    title: 'SCOPE',
+    subtitle: 'Project Management for Service Offices',
+    summary:
+      'End-to-end web system for project-based businesses — lead CRM, versioned proposals with PDF export, per-project Kanban, financial tracking, and deadline management. Full cycle from first contact to final payment.',
+    tags: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'SaaS'],
+    status: 'in-development',
+  },
+  {
+    id: 12,
+    slug: 'portfolio-12',
+    title: 'BIMZCDE',
+    subtitle: 'Common Data Environment for AEC/BIM',
+    summary:
+      'Proprietary CDE platform for Architecture, Engineering, and Construction teams. IFC model management, 3D browser viewer, BCF 3.0 issue tracking, IDS validation, and ISO 19650 approval workflow — vendor-neutral, zero lock-in.',
+    tags: ['React', 'FastAPI', 'Python', 'IfcOpenShell', 'Three.js', 'Docker', 'OpenBIM'],
+    status: 'in-development',
+  },
+  {
+    id: 13,
+    slug: 'portfolio-13',
+    title: 'PROMOBETA',
+    subtitle: 'Price Comparison & Deal Alert Platform',
+    summary:
+      'Web platform for price comparison and deal alerts in the Brazilian e-commerce market. Monitors prices across Mercado Livre, Americanas, Magalu, and Amazon — distributes verified deals to Telegram/WhatsApp groups and notifies users when a tracked product hits their target price, with full price history to expose inflated reference values.',
+    tags: ['React', 'TypeScript', 'Supabase', 'GitHub Actions', 'Telegram Bot'],
+    status: 'in-development',
   },
 ];

@@ -14,6 +14,8 @@
   --accent-dark:  #1aada1;
   --border:       rgba(0, 0, 0, 0.09);
   --ticker-bg:    #1D212B;
+  --amber:        #F59E0B;
+  --amber-muted:  rgba(245, 158, 11, 0.12);
 
   /* shadcn vars (light) */
   --background: 0 0% 100%;
